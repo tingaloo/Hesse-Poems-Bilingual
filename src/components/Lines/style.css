@@ -1,0 +1,17 @@
+.poem {
+  /*lost-column: 1;*/
+  lost-center: 1000px;
+  font-size: 2.7em;
+  font-family: 'Lora', serif;
+}
+
+.original {
+  visibility: visible;
+}
+
+.translated {
+  color: grey;
+  font-size: .5em;
+  word-spacing: 1.3em;
+  visibility: hidden;
+}

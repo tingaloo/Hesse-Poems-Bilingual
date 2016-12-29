@@ -5,13 +5,7 @@
   font-family: 'Lora', serif;
 }
 
-.original {
-  /*color:blue;*/
-}
-
-.translated {
-  color: grey;
-  font-size: .5em;
-  word-spacing: 1.3em;
-  visibility: hidden;
+.title {
+  font-size: 1.3em;
+  margin-bottom: 5vh;
 }
