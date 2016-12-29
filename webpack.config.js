@@ -15,7 +15,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "src"),
     compress: true,
-    port: 9000,
+    port: 3000,
     // watchContentBase: true,
   },
   module: {
@@ -29,14 +29,26 @@ module.exports = {
         options: {
           presets: ["babel-preset-airbnb"],
         }
-      }
+      },
+      {
+        test: /\.md$/,
+        loader: "html!markdown",
+      },
+      {
+        test: /\.css$/,
+        loaders: [
+          'style-loader',
+          'css-loader?modules&importLoaders=1',
+          'postcss-loader'
+        ]
+      },
     ]
   },
   resolve: {
     modules: [
       "node_modules",
-      path.resolve(__dirname, "app")
-
+      path.resolve('./node_modules'),
+      path.resolve(__dirname, "src")
     ],
     extensions: [".js", ".json", ".jsx", ".css"],
   },

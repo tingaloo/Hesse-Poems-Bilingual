@@ -1,5 +1,5 @@
 {
-  "name": "ReactWebpack2Boilerplate",
+  "name": "HessePoems",
   "version": "1.0.0",
   "description": "A boilerplate using Webpack 2 alpha",
   "main": "app.jsx",
@@ -11,15 +11,24 @@
   "author": "Lew",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^6.6.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.7",
     "babel-preset-airbnb": "^2.1.1",
+    "css-loader": "^0.26.1",
     "file-loader": "^0.8.5",
+    "markdown-loader": "^0.1.7",
+    "marked": "^0.3.6",
+    "postcss-loader": "^1.2.1",
+    "postcss-simple-vars": "^3.0.0",
+    "precss": "^1.4.0",
     "react-hot-loader": "3.0.0-beta.5",
+    "style-loader": "^0.13.1",
     "webpack": "2.1.0-beta.25",
     "webpack-dev-server": "2.1.0-beta.10"
   },
   "dependencies": {
+    "lost": "^7.1.1",
     "path": "^0.12.7",
     "react": "^15.0.1",
     "react-dom": "^15.0.1"
