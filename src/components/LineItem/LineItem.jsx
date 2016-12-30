@@ -25,12 +25,12 @@ export default class LineItem extends Component {
 
     if (index % 2 == 0) {
       return (
-          <div id={index} className={style.original}
+          <div key={index} id={index} className={style.original}
           onClick={() => {this.translate(this,index)}}> {combinedLines[index]} </div>
       )
     } else {
       return (
-          <div id={index} className={style.translated}>{combinedLines[index]} </div>
+          <div key={index} id={index} className={style.translated}>{combinedLines[index]} </div>
       )
     }
 

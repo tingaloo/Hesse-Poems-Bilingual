@@ -17,25 +17,14 @@ export default class LineWrapper extends Component {
       combinedLines.push(translated_lines[i])
     }
 
-    // broken way to make visible
-    let translate = function(event, index) {
-      let elem = document.getElementById(index+1)
-      if (elem.style.visibility == 'visible') {
-        elem.style.visibility = 'hidden';
-      } else {
-
-        elem.style.visibility = 'visible'
-      }
-    }
     let self = this;
       let html = combinedLines.map(function(line,index){
-        // index*2+2 is a workaround for nested react onclick handlers
         if (line =="") {
-          return <div><br /></div>
+          return <div key={index} ><br /></div>
         } else {
           return (
-            <div>
-              <LineItem combinedLines={combinedLines} index={index}/>
+            <div key={index}>
+              <LineItem key={index} combinedLines={combinedLines} index={index}/>
             </div>
           )
         }

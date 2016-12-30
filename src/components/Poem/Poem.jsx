@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import style from './style.css'
 import LineWrapper from 'Components/LineWrapper/LineWrapper'
 
+const HOME_ADDR="http://localhost:3000/"
 export default class Poem extends Component {
   constructor(props) {
     super(props)
@@ -12,13 +13,18 @@ export default class Poem extends Component {
   }
 
   componentDidMount() {
-    let path = this.props.path
+    console.log(this.props.location)
+    const { location, pattern, pathname, isExact, params } = this.props
+    console.log(JSON.stringify(this.props, null, 2))
+
+    // let path = this.props.path
+    let path = "Poems/"+pathname+"/"
     let links = new Map([
       ["original", path + "original.md"],
       ["translation", path+"translation.md"]
     ])
     for (let [key,val] of links) {
-      fetch(val)
+      fetch(HOME_ADDR + val)
         .then((res) => {
           console.log(key)
           if(res.ok) {
@@ -44,23 +50,21 @@ export default class Poem extends Component {
 
     let original_lines = this.state.original
     let translated_lines = this.state.translation
-    let title = this.props.path;
+    let title = this.props.pathname;
 
     title = title.split('/')[2].replace(/-/g, ' ')
+    console.log(title)
 
     if (original_lines != "") {
           return (
             <div className={style.poem}>
               <div className={style.title}>{title} </div>
-
               <LineWrapper original={original_lines} translated={translated_lines} />
             </div>
           )
     } else {
       return <div>Loading</div>
     }
-
-
 
   }
 }
