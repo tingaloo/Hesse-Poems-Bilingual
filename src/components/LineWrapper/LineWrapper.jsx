@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import style from './style.css'
-import LineItem from 'components/LineItem/LineItem'
+import LineItem from 'Components/LineItem/LineItem'
 
 export default class LineWrapper extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import style from './style.css'
-import LineWrapper from 'components/LineWrapper/LineWrapper'
+import LineWrapper from 'Components/LineWrapper/LineWrapper'
 
 export default class Poem extends Component {
   constructor(props) {
