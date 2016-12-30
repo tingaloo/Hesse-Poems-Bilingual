@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import style from './style.css'
-import Lines from 'components/Lines/Lines'
+import LineWrapper from 'components/LineWrapper/LineWrapper'
 
 export default class Poem extends Component {
   constructor(props) {
@@ -40,12 +40,6 @@ export default class Poem extends Component {
 
   }
 
-  onItemClick (event) {
-
-    event.currentTarget.style.backgroundColor = '#ccc';
-    console.log(event.currentTarget)
-}
-
   render() {
 
     let original_lines = this.state.original
@@ -55,13 +49,11 @@ export default class Poem extends Component {
     title = title.split('/')[2].replace(/-/g, ' ')
 
     if (original_lines != "") {
-      console.log(original_lines)
           return (
             <div className={style.poem}>
-            <div onClick={this.onItemClick}>Component 1</div>
-
               <div className={style.title}>{title} </div>
-              <Lines original={original_lines} translated={translated_lines} />
+
+              <LineWrapper original={original_lines} translated={translated_lines} />
             </div>
           )
     } else {

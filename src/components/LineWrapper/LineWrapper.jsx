@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import style from './style.css'
+import LineItem from 'components/LineItem/LineItem'
 
-export default class Lines extends Component {
+export default class LineWrapper extends Component {
   constructor(props) {
     super(props)
   }
@@ -9,6 +10,12 @@ export default class Lines extends Component {
   render() {
     let original_lines = this.props.original.split('\n')
     let translated_lines = this.props.translated.split('\n')
+    let combinedLines = [];
+
+    for (let i in original_lines) {
+      combinedLines.push(original_lines[i])
+      combinedLines.push(translated_lines[i])
+    }
 
     // broken way to make visible
     let translate = function(event, index) {
@@ -20,20 +27,15 @@ export default class Lines extends Component {
         elem.style.visibility = 'visible'
       }
     }
-    console.log(original_lines)
     let self = this;
-      let html = original_lines.map(function(line,index){
+      let html = combinedLines.map(function(line,index){
         // index*2+2 is a workaround for nested react onclick handlers
         if (line =="") {
-          return <div><br /><br /><br /></div>
+          return <div><br /></div>
         } else {
           return (
             <div>
-              <div id={index*2+1}  className={style.original}
-              onClick={() => {
-                translate(this, index*2+1)
-              }}>{line}</div>
-              <div id={index*2+2} className={style.translated}> {translated_lines[index]}</div>
+              <LineItem combinedLines={combinedLines} index={index}/>
             </div>
           )
         }
