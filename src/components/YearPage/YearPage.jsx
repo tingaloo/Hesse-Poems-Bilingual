@@ -7,7 +7,7 @@ import PoemSelect from 'Components/PoemSelect/PoemSelect'
 const YearPage = ({ params, pathname }) => {
   return (
     <div>
-      <Match exactly pattern="/:year"
+      <Match pattern="/:year"
         component={PoemSelect}
       />
       <Match exactly pattern="/:year/:poem"

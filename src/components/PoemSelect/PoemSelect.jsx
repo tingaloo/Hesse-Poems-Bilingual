@@ -30,9 +30,9 @@ export default class PoemSelect extends Component {
     return res
   }
 
-  componentDidMount() {
-    console.log(this.props)
-    let path = HOME_ADDR + "Poems/" + this.props.params.year + "/manifest.txt"
+  fetchManifest(year) {
+    console.log("fetching " + year)
+    let path = HOME_ADDR + "Poems/" + year + "/manifest.txt"
     fetch(path)
     .then((res) => {
       if(res.ok) {
@@ -42,12 +42,35 @@ export default class PoemSelect extends Component {
       }
     })
     .then((text) => {
+      console.log("resetting manifest")
+
       this.setState({
+
         manifest: text
       })
     })
   }
+
+  componentDidMount() {
+    this.fetchManifest(this.props.params.year)
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.params.year != nextProps.params.year ||
+        this.state.manifest != nextState.manifest) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  componentWillUpdate(nextProps) {
+    this.fetchManifest(nextProps.params.year);
+  }
+
   render() {
+    console.log(this.props.params.year)
+
     let poemItems = []
     let year = this.props.params.year
     let pathname = this.props.pathname
@@ -64,9 +87,10 @@ export default class PoemSelect extends Component {
         )
       }
     }, this)
+    // <div className={style.year}>{year}</div>
+
     return (
       <div className={style.wrapper}>
-        <div className={style.year}>{year}</div>
         <ul className={style.linkWrapper}>
           {poems}
         </ul>

@@ -1,15 +1,11 @@
 .wrapper {
-  lost-center: 1000px;
+  lost-center: 700px;
   font-size: 2.7em;
   font-family: 'Lora', serif;
   align-items: center;
 }
 
-.title {
-  font-size: 1.3em *40vw;
-  margin-bottom: 5vh;
-  /*text-align: center;*/
-}
+
 
 .years {
   >li a {
@@ -17,11 +13,15 @@
   }
 
 }
-
+.title {
+  font-size: 1.3em *40vw;
+  margin-bottom: 5vh;
+  /*text-align: center;*/
+}
 .lastName {
   font-size: 1.3em;
   position:absolute;
   top: 2vw;
-  left: 30%;
+  left: 40%;
   transform: rotate(90deg);
 }

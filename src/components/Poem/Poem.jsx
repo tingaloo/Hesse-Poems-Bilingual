@@ -47,18 +47,14 @@ export default class Poem extends Component {
   }
 
   render() {
+    console.log("rendering poem")
     console.log(this.props.pathname)
     let original_lines = this.state.original
     let translated_lines = this.state.translation
-    let title = this.props.pathname;
-
-    title = title.split('/')[2].replace(/-/g, ' ')
-    console.log(title)
 
     if (original_lines != "") {
           return (
             <div className={style.poem}>
-              <div className={style.title}>{title} </div>
               <LineWrapper original={original_lines} translated={translated_lines} />
             </div>
           )

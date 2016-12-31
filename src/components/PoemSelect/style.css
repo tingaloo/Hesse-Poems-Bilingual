@@ -4,9 +4,9 @@
 
 .wrapper {
   lost-center: 1000px;
-  font-size: 2.7em;
+  font-size: 1em;
   font-family: 'Lora', serif;
-  align-items: center;
+  margin-left: 3vw;
 }
 .year {
   font-size: 2em;

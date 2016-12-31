@@ -13,14 +13,6 @@ import { HashRouter, BrowserRouter, Match, Miss, Link } from 'react-router'
 export default function App () {
 
     return (
-
-        <BrowserRouter>
-        <div>
-
-
-        <Match exactly pattern="/" component={Home} />
-        <Match pattern="/:year" component={YearPage} />
-      </div>
-  </BrowserRouter>
+      <Home />
     )
 }
