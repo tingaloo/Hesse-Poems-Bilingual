@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
 import style from './style.css'
 import { Link, Match } from 'react-router'
+import PoemLink from './PoemLink'
 const HOME_ADDR="http://localhost:3000/"
 
 
 import YearPage from 'Components/YearPage/YearPage'
+
 
 export default class PoemSelect extends Component {
   constructor(props) {
     super(props)
     this.state = {
       manifest:'',
+      focus: '',
+      clicked: false
     }
   }
 
@@ -59,21 +63,45 @@ export default class PoemSelect extends Component {
     if (this.props.params.year != nextProps.params.year ||
         this.state.manifest != nextState.manifest) {
       return true
+    } else if (nextState.clicked === true){
+      return true
     } else {
       return false
     }
   }
 
+  resetClicks() {
+    this.setState({
+      clicked: false,
+      // focus: ''
+    })
+  }
+
   componentWillUpdate(nextProps) {
     this.fetchManifest(nextProps.params.year);
+    this.resetClicks();
+  }
+
+  handleClick(poem){
+    console.log("wtf")
+    console.log(poem)
+    this.state.focus = poem
+    this.state.clicked = true
+    console.log("handling")
+    console.log(this.state.focus)
   }
 
   render() {
+    console.log("rendering with new pathname")
+    console.log(this.props.pathname)
     console.log(this.props.params.year)
 
     let poemItems = []
     let year = this.props.params.year
     let pathname = this.props.pathname
+    console.log("PATHNAMEE")
+    console.log(this.props.pathname)
+
     if (this.state.manifest != '') {
       poemItems = this.parseManifest(this.state.manifest)
     }
@@ -81,9 +109,28 @@ export default class PoemSelect extends Component {
     let poems = poemItems.map(function(poem, index) {
       if (poem != "") {
         let filename = this.parseTitle(poem)
-        let link = year + "/" + filename
+
+        let url = year + "/" + filename
+        if (this.state.clicked) {
+          url = filename
+        }
+
+        console.log("HERE IS FOCUS ")
+        console.log(this.state.focus)
         return (
-          <li className={style.link} key={index}><Link to={link}>{poem}</Link></li>
+          <li key={index}>
+
+          <PoemLink
+            onClick={() => {
+              this.handleClick()
+            }}
+            pathname={pathname}
+            poem={poem}
+            link={url}
+            index={index}
+            focus={this.state.focus}
+            clicked={this.state.clicked}/>
+          </li>
         )
       }
     }, this)

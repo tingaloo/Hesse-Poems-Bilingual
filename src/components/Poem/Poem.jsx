@@ -13,9 +13,7 @@ export default class Poem extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.location)
     const { location, pattern, pathname, isExact, params } = this.props
-    console.log(JSON.stringify(this.props, null, 2))
 
     // let path = this.props.path
     let path = "Poems/"+pathname+"/"
@@ -47,8 +45,6 @@ export default class Poem extends Component {
   }
 
   render() {
-    console.log("rendering poem")
-    console.log(this.props.pathname)
     let original_lines = this.state.original
     let translated_lines = this.state.translation
 

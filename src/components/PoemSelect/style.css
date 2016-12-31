@@ -15,8 +15,18 @@
 .linkWrapper {
 
 }
-.link {
+.listItem {
   > a {
     text-decoration: none;
   }
+}
+
+.active {
+  font-size:1.5em;
+  color:black;
+}
+.hidden {
+  /*visibility: hidden;*/
+  color:green;
+  background-color:blue;
 }
