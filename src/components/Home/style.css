@@ -1,5 +1,4 @@
 .wrapper {
-  /*lost-column: 1;*/
   lost-center: 1000px;
   font-size: 2.7em;
   font-family: 'Lora', serif;
@@ -7,7 +6,7 @@
 }
 
 .title {
-  font-size: 1.3em;
+  font-size: 1.3em *40vw;
   margin-bottom: 5vh;
   /*text-align: center;*/
 }
@@ -17,4 +16,12 @@
     text-decoration: none;
   }
 
+}
+
+.lastName {
+  font-size: 1.3em;
+  position:absolute;
+  top: 2vw;
+  left: 30%;
+  transform: rotate(90deg);
 }

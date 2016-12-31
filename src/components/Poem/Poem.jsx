@@ -47,7 +47,7 @@ export default class Poem extends Component {
   }
 
   render() {
-
+    console.log(this.props.pathname)
     let original_lines = this.state.original
     let translated_lines = this.state.translation
     let title = this.props.pathname;
