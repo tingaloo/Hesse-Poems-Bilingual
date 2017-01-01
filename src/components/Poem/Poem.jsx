@@ -12,10 +12,9 @@ export default class Poem extends Component {
     }
   }
 
-  componentDidMount() {
-    const { location, pattern, pathname, isExact, params } = this.props
+  parsePoems(pathname) {
+    const { location, pattern, isExact, params } = this.props
 
-    // let path = this.props.path
     let path = "Poems/"+pathname+"/"
     let links = new Map([
       ["original", path + "original.md"],
@@ -24,7 +23,6 @@ export default class Poem extends Component {
     for (let [key,val] of links) {
       fetch(HOME_ADDR + val)
         .then((res) => {
-          console.log(key)
           if(res.ok) {
             return res.text()
           } else {
@@ -41,7 +39,17 @@ export default class Poem extends Component {
           return text
         })
     }
+  }
 
+  componentDidMount() {
+    this.parsePoems(this.props.pathname)
+  }
+
+  componentWillUpdate(nextProps) {
+    if (this.props.pathname != nextProps.pathname) {
+      this.parsePoems(nextProps.pathname);
+
+    }
   }
 
   render() {

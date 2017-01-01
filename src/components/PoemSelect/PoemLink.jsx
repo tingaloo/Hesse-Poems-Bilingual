@@ -15,24 +15,12 @@ export default class extends Component {
   }
 
   transform(event) {
-    if (this.state.clicked == false) {
-      this.setState({
-        active: !this.state.active
-      })
-    }
-
-  }
-
-  // fix click later
-  click(event){
-    // if (this.state.clicked===true){
-    //   event.preventDefault()
-    // } else {
-      console.log("clickd here")
-      console.log(this.props.poem)
-      this.props.onClick(this.props.poem)
-        this.setState({clicked:true})
-    
+    console.log("transforming")
+    // if (this.state.clicked == false) {
+    //   this.setState({
+    //     active: !this.state.active
+    //   })
+    // }
 
   }
 
@@ -41,29 +29,40 @@ export default class extends Component {
     this.state.active=false
   }
 
+  parseTitle(title) {
+    let filename = title.toLowerCase()
+    filename = filename.replace(/\s/g, "-")
+    filename = filename.replace(/\(|\)|,|\./g, "")
+    filename = filename.replace(/ä/g, "a")
+    filename = filename.replace(/ö/g, "o")
+    filename = filename.replace(/ü/g, "u")
+    return filename
+  }
+
+  handleClick(event) {
+    this.props.selectPoem(this.props.poem)
+  }
 
   render() {
-    console.log("new render")
-    // console.log(this.props.poem)
-    // console.log(this.props.focus)
+    console.log(this.props.selectedPoem)
     let listItem = cx({
-      active: this.state.active,
+      active: this.props.poem === this.props.selectedPoem,
       listItem: true,
       hover: this.state.active,
       clicked: this.state.clicked,
-      hidden: (this.props.poem != this.props.focus) && this.props.clicked
     });
-    let self = this
-    console.log("display LINK")
-    console.log(this.props.link)
+
+
+    let filename = this.parseTitle(this.props.poem)
+
+    let url = this.props.pathname + "/" + filename
     return (
       <Link
-      className={listItem}
-      key={this.props.index}
-      onClick={this.click.bind(this)}
-      onMouseOver={self.transform.bind(this)}
-      onMouseLeave={self.transform.bind(this)}
-      to={this.props.link}>
+        className={listItem}
+        onClick = {this.handleClick.bind(this)}
+        key={this.props.index}
+        to={url}>
+
       {this.props.poem}
       </Link>
     )
