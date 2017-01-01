@@ -14,16 +14,6 @@ export default class extends Component {
     }
   }
 
-  transform(event) {
-    console.log("transforming")
-    // if (this.state.clicked == false) {
-    //   this.setState({
-    //     active: !this.state.active
-    //   })
-    // }
-
-  }
-
   componentWillUpdate() {
     this.state.clicked=false
     this.state.active=false
@@ -46,7 +36,7 @@ export default class extends Component {
   render() {
     console.log(this.props.selectedPoem)
     let listItem = cx({
-      active: this.props.poem === this.props.selectedPoem,
+      // active: this.props.poem === this.props.selectedPoem,
       listItem: true,
       hover: this.state.active,
       clicked: this.state.clicked,
