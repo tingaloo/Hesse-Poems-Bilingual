@@ -42,8 +42,7 @@ export default class PoemLinkWrapper extends Component {
         let filename = this.parseTitle(poem)
 
         return (
-          <li key={index}
-          >
+
 
           <PoemLink
             pathname={this.props.pathname}
@@ -52,7 +51,6 @@ export default class PoemLinkWrapper extends Component {
             selectedPoem={this.state.selectedPoem}
             index={index}
             />
-          </li>
         )
       }
     }, this)

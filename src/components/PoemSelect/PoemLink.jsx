@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import style from './style.css'
+import store from 'Store/PoemStore'
 import { Link } from 'react-router'
 import classNames from 'classnames/bind';
+import { observer } from 'mobx-react'
 
 let cx = classNames.bind(style);
-
-export default class extends Component {
+@observer
+export default class PoemLink extends Component {
   constructor(props) {
     super(props)
     this.state = {
       active: false,
-      clicked: false
     }
   }
 
   componentWillUpdate() {
-    this.state.clicked=false
     this.state.active=false
   }
 
@@ -29,17 +29,18 @@ export default class extends Component {
     return filename
   }
 
-  handleClick(event) {
-    this.props.selectPoem(this.props.poem)
+  changeSelectedPoem(event) {
+    // this.props.selectPoem(this.props.poem)
+    store.changeSelectedPoem(this.props.poem)
   }
 
   render() {
-    console.log(this.props.selectedPoem)
+    console.log(store.selectedPoem)
     let listItem = cx({
-      // active: this.props.poem === this.props.selectedPoem,
+      active: this.props.poem === store.selectedPoem,
       listItem: true,
       hover: this.state.active,
-      clicked: this.state.clicked,
+      hidden: this.props.poem != store.selectedPoem && store.selectedPoem != ''
     });
 
 
@@ -47,14 +48,16 @@ export default class extends Component {
 
     let url = this.props.pathname + "/" + filename
     return (
+      <li className={listItem} key={this.props.index}
+      >
       <Link
-        className={listItem}
-        onClick = {this.handleClick.bind(this)}
+        onClick = {this.changeSelectedPoem.bind(this)}
         key={this.props.index}
         to={url}>
 
       {this.props.poem}
       </Link>
+      </li>
     )
   }
 }

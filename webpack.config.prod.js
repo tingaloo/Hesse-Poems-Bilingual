@@ -1,16 +1,21 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const webpack = require('webpack');
+
+
 'use strict';
 var path = require("path");
 
 module.exports = {
   context: __dirname + "/src",
-  devtool: "cheap-eval-source-map",
+  devtool: "source-map",
   entry: {
     app: "./index.js"
   },
   output: {
     path: __dirname + "/dist",
     filename: "[name].bundle.js",
-    publicPath: "/dist",
+    publicPath: "./",
   },
   devServer: {
     contentBase: path.join(__dirname, "src"),
@@ -19,6 +24,18 @@ module.exports = {
     historyApiFallback: true,
     // watchContentBase: true,
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Hesse Poems',
+      template: 'template.html',
+      inject: 'body',
+    })
+  ],
   module: {
     rules: [
       {
@@ -46,8 +63,8 @@ module.exports = {
     modules: [
       "node_modules",
       path.resolve('./node_modules'),
-      path.resolve(__dirname, "src")
+      path.resolve(__dirname, "src"),
     ],
-    extensions: [".js", ".json", ".jsx", ".css"],
+    extensions: [".js", ".json", ".jsx", ".css", ".html"],
   },
 };

@@ -13,7 +13,9 @@
 }
 
 .linkWrapper {
-
+  > li {
+    list-style: none;
+  }
 }
 .listItem {
   > a {
@@ -26,7 +28,6 @@
   color:black;
 }
 .hidden {
-  /*visibility: hidden;*/
-  color:green;
-  background-color:blue;
+  visibility: hidden;
+  height: 0px;
 }

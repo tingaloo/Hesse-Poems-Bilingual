@@ -1,6 +1,7 @@
 import React from 'react'
 import Poem from 'Components/Poem/Poem'
 import Home from 'Components/Home/Home'
+import store from 'Store/PoemStore'
 
 import YearPage from 'Components/YearPage/YearPage'
 import { HashRouter, BrowserRouter, Match, Miss, Link } from 'react-router'
@@ -13,6 +14,6 @@ import { HashRouter, BrowserRouter, Match, Miss, Link } from 'react-router'
 export default function App () {
 
     return (
-      <Home />
+      <Home store={store}/>
     )
 }

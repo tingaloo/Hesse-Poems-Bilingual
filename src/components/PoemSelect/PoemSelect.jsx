@@ -5,9 +5,7 @@ import PoemLink from './PoemLink'
 import PoemLinkWrapper from './PoemLinkWrapper'
 const HOME_ADDR="http://localhost:3000/"
 
-
 import YearPage from 'Components/YearPage/YearPage'
-
 
 export default class PoemSelect extends Component {
   constructor(props) {
@@ -48,7 +46,6 @@ export default class PoemSelect extends Component {
   }
 
   render() {
-
     let poemItems = []
     let year = this.props.params.year
     let pathname = this.props.pathname
