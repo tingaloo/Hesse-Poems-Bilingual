@@ -9,7 +9,7 @@ import Poem from 'Components/Poem/Poem'
 // programmically read years from poems folder
 export default function Home () {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename="/Poems">
         <div className={style.wrapper}>
           <div className={style.title}><h1>Herman </h1></div>
           <div className={style.lastName}><h1>Hesse </h1></div>

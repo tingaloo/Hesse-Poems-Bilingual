@@ -5,6 +5,7 @@ import Poem from 'Components/Poem/Poem'
 import PoemSelect from 'Components/PoemSelect/PoemSelect'
 
 const YearPage = ({ params, pathname }) => {
+  console.log(pathname)
   return (
     <div>
       <Match pattern="/:year"

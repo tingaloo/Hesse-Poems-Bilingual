@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import style from './style.css'
 import LineWrapper from 'Components/LineWrapper/LineWrapper'
 
-const HOME_ADDR="http://localhost:3000/"
 export default class Poem extends Component {
   constructor(props) {
     super(props)
@@ -13,15 +12,13 @@ export default class Poem extends Component {
   }
 
   parsePoems(pathname) {
-    const { location, pattern, isExact, params } = this.props
-
-    let path = "Poems/"+pathname+"/"
+    const { location, pattern, params } = this.props
     let links = new Map([
-      ["original", path + "original.md"],
-      ["translation", path+"translation.md"]
+      ["original", params.poem + "/original.md"],
+      ["translation", params.poem + "/translation.md"]
     ])
     for (let [key,val] of links) {
-      fetch(HOME_ADDR + val)
+      fetch(val)
         .then((res) => {
           if(res.ok) {
             return res.text()
@@ -30,7 +27,6 @@ export default class Poem extends Component {
           }
         })
         .then((text) => {
-          // set text to state
           if (key === 'original') {
             this.setState({original: text})
           } else {

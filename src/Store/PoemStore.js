@@ -9,6 +9,10 @@ class PoemStore {
     this.selectedPoem = poem
   }
 
+  resetSelectedPoem() {
+    this.selectedPoem = ''
+  }
+
   changeSelectedYear(year) {
     this.selectedYear = year
     this.selectedPoem = ''
