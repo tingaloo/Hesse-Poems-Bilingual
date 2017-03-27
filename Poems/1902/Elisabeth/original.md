@@ -1,0 +1,14 @@
+Ich soll erzählen,  
+Die Nacht ist schon spät--  
+Willst du mich quälen,  
+Schöne Elisabeth?  
+
+Daran ich dichte
+Und du dazu,  
+Meine Liebesgeschichte  
+Ist dieser Abend und du.  
+
+Du musst nicht stören,  
+Die Reime verwehn.  
+Bald wirst du sie hören,  
+Hören und nicht verstehn.  
